@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- debug 빌드 전용: 에뮬레이터에서 개발 PC의 로컬 서버를 http로 부를 수 있게 한다.
+     10.0.2.2(에뮬레이터의 호스트 주소) 또는 adb reverse tcp:3100 tcp:3100 뒤 127.0.0.1. release에는 들어가지 않는다. -->
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">10.0.2.2</domain>
+        <domain includeSubdomains="false">127.0.0.1</domain>
+    </domain-config>
+</network-security-config>

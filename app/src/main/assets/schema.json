@@ -1,0 +1,116 @@
+{
+  "packageName": "kr.bandi.car",
+  "appDescription": "Finds a festival or local event the driver can still enjoy if they leave now, judging driving range, arrival time against event hours, and who is riding along.",
+  "version": "0.1.0",
+  "actionCalls": [
+    {
+      "type": "function",
+      "function": {
+        "name": "SUGGEST_FESTIVAL_NOW",
+        "description": "Recommend one festival or local event that is still open on arrival if the car leaves now.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "timeBudgetMinutes": {
+              "type": "number",
+              "description": "Free time the user has for the whole outing, in minutes."
+            },
+            "returnByTime": {
+              "type": "string",
+              "description": "Local time the user must be back home, in HH:mm 24-hour format."
+            },
+            "withChildAge": {
+              "type": "number",
+              "description": "Age of a child riding along, if the user mentions one."
+            },
+            "withSenior": {
+              "type": "boolean",
+              "description": "True if an elderly person is riding along."
+            },
+            "withPet": {
+              "type": "boolean",
+              "description": "True if a pet is riding along."
+            },
+            "withStroller": {
+              "type": "boolean",
+              "description": "True if the group needs stroller access."
+            },
+            "withWheelchair": {
+              "type": "boolean",
+              "description": "True if the group needs wheelchair access."
+            },
+            "theme": {
+              "type": "string",
+              "description": "Mood or type of event the user wants.",
+              "enum": ["fireworks", "night", "flower", "food", "music", "traditional", "experience", "exhibit"]
+            },
+            "rainSafe": {
+              "type": "boolean",
+              "description": "True if the event must be enjoyable in rain."
+            },
+            "anotherOption": {
+              "type": "boolean",
+              "description": "True if the user rejected the previous recommendation and wants a different one."
+            },
+            "excludeContentIds": {
+              "type": "array",
+              "description": "Content IDs of events already recommended and rejected in this conversation.",
+              "items": { "type": "string" }
+            }
+          },
+          "required": []
+        },
+        "component": "activity"
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "CHECK_FESTIVAL_ARRIVAL",
+        "description": "Check whether a named festival or event will still be running when the car arrives if it leaves now, or answer a question about it such as its price, programs, parking, or facilities.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "festivalName": {
+              "type": "string",
+              "description": "Name of the festival or event the user asked about, taken from the conversation if the user says it or there."
+            },
+            "question": {
+              "type": "string",
+              "description": "The user's question about the festival in their own words, when they ask something other than whether it can still be seen."
+            }
+          },
+          "required": ["festivalName"]
+        },
+        "component": "activity"
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "START_FESTIVAL_ROUTE",
+        "description": "Start navigation to the recommended or named festival, or plan the drive home after the event.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target": {
+              "type": "string",
+              "description": "Where to navigate.",
+              "enum": ["recommended", "named", "home"]
+            },
+            "contentId": {
+              "type": "string",
+              "description": "Content ID of the festival returned by a previous recommendation."
+            },
+            "festivalName": {
+              "type": "string",
+              "description": "Name of the festival when the target is named."
+            }
+          },
+          "required": ["target"]
+        },
+        "component": "activity"
+      }
+    }
+  ]
+}
