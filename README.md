@@ -11,7 +11,7 @@
 | 항목 | 내용 |
 |---|---|
 | 앱 이름 | 반디 (패키지 `kr.bandi.car`) |
-| APK | [`apk/이준혁_Bandi_release.apk`](apk/이준혁_Bandi_release.apk) (release, 서명됨, versionName 0.1.0) |
+| APK | [릴리스 v0.1.0에서 받기](https://github.com/bldev2473/bandi-pleos/releases/tag/v0.1.0) (release, 서명됨, versionName 0.1.0) |
 | 에뮬레이터 | Pleos Connect Emulator 2.1.0 (Android API 34 시스템 이미지, macOS arm64에서 확인) |
 | 화면 규격 | 2560x1440, 160dpi |
 | 사용 SDK | Vehicle 2.3.2, NaviHelper 3.0.5, TextToSpeech 3.3.1, Gleo Interface(App Schema `app/src/main/assets/schema.json`) |
@@ -19,7 +19,7 @@
 ### 실행 방법
 
 1. Android Studio에서 Pleos Connect Emulator 2.1.0을 만듭니다(아래 "개발 환경 준비" 참고).
-2. 에뮬레이터를 켜고 APK를 설치합니다: `adb install apk/이준혁_Bandi_release.apk`
+2. 에뮬레이터를 켜고 [릴리스 v0.1.0](https://github.com/bldev2473/bandi-pleos/releases/tag/v0.1.0)에서 받은 APK를 설치합니다: `adb install 이준혁_Bandi_release.apk`
 3. 앱 목록에서 "반디"를 엽니다. Gleo와 같은 인텐트로 부를 수도 있습니다(아래 "Gleo 없이 시험하기" 참고).
 4. 기어, 주행 가능 거리, 배터리는 Virtual Console(`adb forward tcp:8088 tcp:8088` 뒤 `http://localhost:8088`)에서 바꿉니다. 에뮬레이터를 새로 켜면 주행 가능 거리가 0이므로 먼저 값을 넣어 주세요.
 
